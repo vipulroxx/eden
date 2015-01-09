@@ -1,0 +1,129 @@
+{{extend "layout.html"}}  
+ {{if is_logged_in:}}         
+            <div class="col-md-6">
+              <div class="panel panel-default">
+                <div class="panel-heading clearfix pos-rel">
+                  <div class="pos-abs t-10 l-15 f-18 c-gray"><i class="fa fa-search"></i></div>
+                  <h2 class="panel-title width-100p c-blue text-center w-500 f-20 carrois">Work To be Done</h2>
+                  <div class="pos-abs t-10 r-5 f-18 c-blue cursor-pointer"><div class="glyph-icon flaticon-plus16 f-32"></div></div>
+                </div>
+                <div class="panel-body messages">
+                  <div class="row">
+                  
+                      <div class="withScroll" data-height="320">
+                        <a href="#" class="message-item media">
+                          <div class="media">
+                            <img src="/{{=appname}}/static/themes/{{=theme}}/img/avatars/avatar1.png" alt="avatar 1" width="40" class="pull-left">
+                            <div class="media-body">
+                              <div class="pull-left">
+                                <p class="c-dark m-0"><strong>Welcome {{=auth.user.first_name}} {{=auth.user.last_name}}</strong></p>
+                                <p class="c-gray m-0">{{=auth.user.email}}</p>
+                                <p class="c-gray m-0">GCI TASK</p>
+                              </div>
+                              <div class="pull-right f-18 p-t-10">
+                                <i rel="tooltip" title="add to favs" data-placement="left" class="favs fa fa-star-o p-r-10"></i>
+                                <i rel="tooltip" title="send email" data-placement="left" class="fa fa-envelope-o p-r-10"></i>
+                                <i rel="tooltip" title="show phone" data-placement="left"  class="fa fa-phone"></i>
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                        
+                      </div>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+  {{else:}}
+
+
+<div class="row">
+                <div class="col-lg-8 blog-results">
+                                                
+     <div id="slider">
+    <img src="{{=URL(c="static", f="themes", args=["EIDMS", "img", "1.jpg"])}}" alt="slide 1" /><!--@todo : to have proper title caption -->
+    <img src="{{=URL(c="static", f="themes", args=["EIDMS", "img", "2.jpg"])}}" alt="slide 2" /><!--@todo : to have proper title caption -->
+    <img src="{{=URL(c="static", f="themes", args=["EIDMS", "img", "3.jpg"])}}" alt="slide 3" /><!--@todo : to have proper title caption -->
+    <img src="{{=URL(c="static", f="themes", args=["EIDMS", "img", "4.jpg"])}}" alt="slide 4" /><!--@todo : to have proper title caption -->
+    <img src="{{=URL(c="static", f="themes", args=["EIDMS", "img", "5.jpg"])}}" alt="slide 5" /><!--@todo : to have proper title caption -->
+                </div>
+                      
+                    
+                   
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                   <!-- @Todo: News update -->         
+                    <div class="">
+                        <ul id="myTab2" class="nav nav-tabs nav-dark">
+                            <li class=""><a href="#tab1" data-toggle="tab"><i class="fa fa-home"></i> Local </a></li>
+                            <li class="active"><a href="#tab2" data-toggle="tab"><i class="fa fa-user"></i> National</a></li>
+                        
+                        </ul>
+                        <div id="myTabContent" class="tab-content">
+                            <div class="tab-pane fade" id="tab1">
+                                <div class="row column-seperation">
+                                    <div class="col-md-6 line-separator">
+                                        <h3><strong>Local and State</strong>News</h3>
+                                        <h4>To be filled by Rss feeds .This will be a text carousel</h4>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p class="light">To be done</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade active in" id="tab2">
+                                <h3>National<strong>News</strong></h3>
+                                <p>To be filled by Rss feeds .This will be a text carousel</p>
+                            </div>
+                           
+                        </div>
+                    </div>
+                
+                            
+                            
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="col-lg-4 blog-sidebar">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                          <div class="login-box clearfix animated flipInY">
+                    <div class="login-logo">
+                        <a href="#">
+                            <img src="{{=URL(c="static", f="themes", args=["EIDMS", "img", "logo.png"])}}" />
+                        </a>
+                    </div>
+                    <hr>
+                    <div class="login-form">
+                      {{=auth.login(
+                       next=URL(c=request.controller,
+                                f=request.function,
+                                args=request.args,
+                                vars=request.get_vars))}}
+                        <div class="login-links">
+                            <a href='{{=URL(f="user", args="retrieve_password")}}'>Forgot password?</a>
+                            <br>
+                            <a href='{{=URL(r=request, c="default", f="index", args="register")}}'>Don't have an account? <strong>Sign Up</strong></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="social-login row">
+                    <div class="fb-login col-lg-6 col-md-12 animated flipInX">
+                        <a href='{{=URL(f="facebook", args="login")}}' class="btn btn-facebook btn-block">Connect with <strong>Facebook</strong></a>
+                    </div>
+                    <div class="twit-login col-lg-6 col-md-12 animated flipInX">
+                        <a href='{{=URL(f="google", args="login")}}' class="btn btn-danger btn-block">Connect with <strong>Google</strong></a>
+                    </div>
+                </div>
+                            
+                        </div>
+                    </div>
+                    
+                    <!-- /well -->
+                    
+                </div>
+            </div>
+  {{pass}}
